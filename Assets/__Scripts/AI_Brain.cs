@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class AI_Brain : MonoBehaviour
 {
-    //**    ---Components---    **//
-    //  [[ set in editor ]] 
+    private void CreateNode() {
+        
+    }
     
-    //  [[ set in Start() ]] 
-    
-    
-    //**    ---Variables---    **//
-    //  [[ balance control ]] 
-    
-    //  [[ internal work ]] 
-    
-    
-    //**    ---Properties---    **//
-    
-    
-    //**    ---Functions---    **//
+}
+
+public class GameState {
+    public int player1_HP;
+    public int player1_Shield;
+    public int player1_SP;
+    public int player1_Stun;
+
+    public int player2_HP;
+    public int player2_Shield;
+    public int player2_SP;
+    public int player2_Stun;
 }
