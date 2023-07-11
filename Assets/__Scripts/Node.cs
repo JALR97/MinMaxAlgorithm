@@ -11,15 +11,13 @@ public class Node {
     private Node parent;
     private List<Node> childs;
 
-    public Node(Move_SO moveMade, Node parent) {
+    public Node(Move_SO moveMade, Node parent = null) {
         this.MoveMade = moveMade;
         this.parent = parent;
-        //Update nodeState
-    }
-
-    public List<Move_SO> GenerateMoves() {
-        
-        return null;
+        if (parent != null) {
+            nodeState = new GameState(parent.nodeState, moveMade);
+        }else
+            nodeState = new GameState();
     }
 }
 
