@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -31,11 +32,15 @@ public class GameManager : MonoBehaviour {
 
     public Character char1;
     public Character char2;
-
+    
+    //Attack buttons
+    [SerializeField] private List<TMP_Text> MoveButtons;
+    
+    
     private void Start() {
         //
         SpawnChar(1, Warrior);
-        SpawnChar(2, Warrior);
+        SpawnChar(2, Barbarian);
         char2.Initialize(Character.CharacterClass.WARRIOR);
 
         UpdateUI();
@@ -44,9 +49,13 @@ public class GameManager : MonoBehaviour {
     private void UpdateUI() {
         statsUI1.text = char1.StatsText();
         statsUI2.text = char2.StatsText();
+
+        for (int i = 0; i < MoveButtons.Count; i++) {
+            MoveButtons[i].text = GetCharPrefab(char1.characterClass).moves[i].name;
+        }
     }
 
-    private void ExecMove(Move_SO move) {
+    public void ExecMove(Move_SO move) {
         Character attacker;
         Character target;
         if (idTurnPlayer == 1) {
@@ -99,7 +108,7 @@ public class GameManager : MonoBehaviour {
         UpdateUI();
     }
 
-    private Character GetCharPrefab(Character.CharacterClass characterClass) {
+    public Character GetCharPrefab(Character.CharacterClass characterClass) {
         switch (characterClass) {
             case Character.CharacterClass.WARRIOR:
                 return Warrior;

@@ -134,3 +134,5 @@ MonoBehaviour:
   moves:
   - {fileID: 11400000, guid: 7fd25f49fb3e68b44821561670ce7b76, type: 2}
   - {fileID: 11400000, guid: f59c2dd6df84a5f4ea9fe57f396713dc, type: 2}
+  - {fileID: 11400000, guid: 5420d49865af4d948811b63778aad83e, type: 2}
+  - {fileID: 11400000, guid: 08920c44e40e03147b66a5d681138b5a, type: 2}

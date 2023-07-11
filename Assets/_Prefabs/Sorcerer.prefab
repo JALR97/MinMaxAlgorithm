@@ -45,11 +45,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 225810ebaa244112b973167e70069e50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterCharacterClass: 0
-  initialStats: {fileID: 0}
+  characterCharacterClass: 1
+  initialStats: {fileID: 11400000, guid: 1884dc11996c9374784e08f6c2b0c85d, type: 2}
   moves:
-  - {fileID: 11400000, guid: 7fd25f49fb3e68b44821561670ce7b76, type: 2}
-  - {fileID: 11400000, guid: f59c2dd6df84a5f4ea9fe57f396713dc, type: 2}
+  - {fileID: 11400000, guid: 183884bcd3ffa634c87139440142e63b, type: 2}
+  - {fileID: 11400000, guid: 23901fbfbb3c0004fa187d84135c7653, type: 2}
+  - {fileID: 11400000, guid: 197a09d9bf873a44782f290c8e2854fc, type: 2}
+  - {fileID: 11400000, guid: 5036d1c65f4da1a41a56467eb4e46dc0, type: 2}
 --- !u!1 &8608380078280560400
 GameObject:
   m_ObjectHideFlags: 0

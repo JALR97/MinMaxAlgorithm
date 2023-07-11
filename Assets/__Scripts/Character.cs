@@ -11,7 +11,7 @@ public class Character : MonoBehaviour {
         RANGER,
         ANY
     }
-    public CharacterClass characterCharacterClass;
+    public CharacterClass characterClass;
     
     public struct CharStats {
         public int HP;
@@ -22,17 +22,22 @@ public class Character : MonoBehaviour {
     private CharStats _stats;
     
     [SerializeField] private ClassStats_SO initialStats;
-    [SerializeField] private List<Move_SO> moves;
+    [SerializeField] public List<Move_SO> moves;
+    public Move_SO Pass { get; }
     
     public bool Alive { get; private set; } = true;
     public bool Backup { get; private set; }
     public CharacterClass BackupClass { get; private set; }
     
     //Functions    
-    public List<Move_SO> PossibleMoves() {
+    public List<Move_SO> PossibleMoves(int sp = -1) {
+        if (sp == -1) { //If -1 is sent as argument, the sp used will be the current. otherwise it'll calculate for a specific sp
+            sp = _stats.SP;
+        }
+        
         List<Move_SO> avail = new List<Move_SO>();
         foreach (var move in moves) {
-            if (-move.attackerSP <= _stats.SP) {
+            if (-move.attackerSP <= sp) {
                 avail.Add(move);
             }
         }
@@ -70,5 +75,9 @@ public class Character : MonoBehaviour {
         }
 
         return result;
+    }
+
+    public CharStats Stats() {
+        return _stats;
     }
 }
