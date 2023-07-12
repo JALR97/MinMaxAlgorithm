@@ -1,8 +1,9 @@
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class Node {
-    private Move_SO MoveMade;
+    public Move_SO MoveMade;
     private GameState nodeState;
     
     public float valuation;
@@ -42,8 +43,14 @@ public class Node {
     }
 
     public void EvaluateNode() {
+        // if (childs != null) {
+        //     Debug.Log(childs.Count);
+        // }
         if (childs == null || childs.Count == 0) {
             valuation = nodeState.EvaluateState();
+            ///////////////////////////
+            AI_Brain.evaluatedNodes += 1;
+            ///////////////////////////
         }
         else {
             if (isMaxNode) {
@@ -66,29 +73,34 @@ public class Node {
     }
     
     public void CreateNodes(int depth) {
-        Debug.Log("debug: in create node");
         if (depth == 0) {
-            Debug.Log("debug: leaf");
             return;
         }
 
-        childs = new List<Node>();
         
         Character activeCharacter = nodeState.idTurnPlayer == 1 ? GameManager.Instance.char1 : GameManager.Instance.char2;
         Character.CharStats characterStats = nodeState.idTurnPlayer == 1 ? nodeState.c1Stats : nodeState.c2Stats;
 
-        if (characterStats.Stun) {
+        if (characterStats.HP <= 0) {
+            //If the character is dead they shouldn't get any moves
+            return;
+        }
+        else if (characterStats.Stun) {
             var newN = new Node(activeCharacter.Pass, this);
+            childs = new List<Node>();
             childs.Add(newN);
         }
         else {
+            childs = new List<Node>();
             List<Move_SO> moves = activeCharacter.PossibleMoves(characterStats.SP);
-        
             foreach (var move in moves) {
                 var newN = new Node(move, this);
                 childs.Add(newN);
             }
         }
+        ///////////////////////////
+        //AI_Brain.createdNodes += childs.Count;
+        ///////////////////////////
         foreach (var node in childs) {
             node.CreateNodes(depth - 1);
         }

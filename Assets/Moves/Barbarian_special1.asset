@@ -15,10 +15,10 @@ MonoBehaviour:
   name: Special 1
   characterCharacterClass: 0
   attackerHP: 0
-  attackerShield: 0
-  attackerSP: 0
+  attackerShield: 2
+  attackerSP: -1
   attackerStun: 0
-  targetHP: -1
+  targetHP: -3
   targetShield: 0
   targetSP: 0
   targetStun: 0

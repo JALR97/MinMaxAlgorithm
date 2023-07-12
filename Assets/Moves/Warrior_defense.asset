@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Warrior_defense
   m_EditorClassIdentifier: 
   name: Basic defense
-  characterClass: 0
+  characterCharacterClass: 0
   attackerHP: 0
-  attackerShield: 3
+  attackerShield: 2
   attackerSP: 0
   attackerStun: 0
   targetHP: 0

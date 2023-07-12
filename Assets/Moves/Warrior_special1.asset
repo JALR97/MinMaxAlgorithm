@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Special 1
   characterCharacterClass: 0
-  attackerHP: 0
+  attackerHP: -1
   attackerShield: 0
-  attackerSP: 0
+  attackerSP: -1
   attackerStun: 0
-  targetHP: -1
+  targetHP: -4
   targetShield: 0
   targetSP: 0
   targetStun: 0

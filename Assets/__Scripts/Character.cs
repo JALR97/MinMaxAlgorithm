@@ -21,7 +21,7 @@ public class Character : MonoBehaviour {
     }
     private CharStats _stats;
     
-    [SerializeField] private ClassStats_SO initialStats;
+    [SerializeField] public ClassStats_SO initialStats;
     [SerializeField] public List<Move_SO> moves;
     public Move_SO Pass { get; }
     
@@ -30,14 +30,14 @@ public class Character : MonoBehaviour {
     public CharacterClass BackupClass { get; private set; }
     
     //Functions    
-    public List<Move_SO> PossibleMoves(int sp = -1) {
-        if (sp == -1) { //If -1 is sent as argument, the sp used will be the current. otherwise it'll calculate for a specific sp
-            sp = _stats.SP;
-        }
-        
+    public List<Move_SO> PossibleMoves(int sp) {
         List<Move_SO> avail = new List<Move_SO>();
+        
+        if (_stats.HP <= 0) {
+            return avail;
+        }
         foreach (var move in moves) {
-            if (-move.attackerSP <= sp) {
+            if (sp >= Math.Abs(move.attackerSP)) {
                 avail.Add(move);
             }
         }
@@ -58,9 +58,20 @@ public class Character : MonoBehaviour {
     }
     
     public void UpdateStats(int hp, int shield, int sp, bool stun) {
-        _stats.HP += hp;
-        _stats.Shield += shield;
-        _stats.SP += sp;
+        if (hp < 0) { //if it's a damaging attack
+            int startingHP = _stats.HP;
+            
+            _stats.Shield = Mathf.Clamp(_stats.Shield + shield, 0, initialStats.maxShield);
+            int totalHitPool = _stats.HP + _stats.Shield;
+            totalHitPool += hp;
+            _stats.HP = Mathf.Clamp(totalHitPool, 0, startingHP);
+            _stats.Shield = Mathf.Clamp(totalHitPool % startingHP, 0, startingHP);
+        }
+        else {
+            _stats.HP = Mathf.Clamp(_stats.HP + hp, 0, initialStats.maxHP);
+            _stats.Shield = Mathf.Clamp(_stats.Shield + shield, 0, initialStats.maxShield);
+        }
+        _stats.SP = Mathf.Clamp(_stats.SP + sp,0, initialStats.maxSP);
         _stats.Stun = stun;
         if (_stats.HP <= 0) {
             Alive = false;
@@ -79,5 +90,21 @@ public class Character : MonoBehaviour {
 
     public CharStats Stats() {
         return _stats;
+    }
+
+    public override string ToString() {
+        switch (characterClass) {
+            case CharacterClass.WARRIOR:
+                return "WARRIOR";
+            case CharacterClass.SORCERER:
+                return "SORCERER";
+            case CharacterClass.BARBARIAN:
+                return "BARBARIAN";
+            case CharacterClass.RANGER:
+                return "RANGER";
+            case CharacterClass.ANY:
+                return "N/A";
+        }
+        return "";
     }
 }

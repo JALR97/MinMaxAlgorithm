@@ -129,10 +129,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 225810ebaa244112b973167e70069e50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterCharacterClass: 0
+  characterClass: 0
   initialStats: {fileID: 11400000, guid: 9434859cbcacbee4db87c57b5d90bc83, type: 2}
   moves:
-  - {fileID: 11400000, guid: 7fd25f49fb3e68b44821561670ce7b76, type: 2}
   - {fileID: 11400000, guid: f59c2dd6df84a5f4ea9fe57f396713dc, type: 2}
+  - {fileID: 11400000, guid: 7fd25f49fb3e68b44821561670ce7b76, type: 2}
   - {fileID: 11400000, guid: 5420d49865af4d948811b63778aad83e, type: 2}
   - {fileID: 11400000, guid: 08920c44e40e03147b66a5d681138b5a, type: 2}

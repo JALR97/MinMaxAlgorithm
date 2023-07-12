@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 225810ebaa244112b973167e70069e50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterCharacterClass: 1
+  characterClass: 1
   initialStats: {fileID: 11400000, guid: 1884dc11996c9374784e08f6c2b0c85d, type: 2}
   moves:
   - {fileID: 11400000, guid: 183884bcd3ffa634c87139440142e63b, type: 2}

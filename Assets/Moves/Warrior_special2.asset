@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Special 2
   characterCharacterClass: 0
-  attackerHP: 0
-  attackerShield: 3
-  attackerSP: 0
+  attackerHP: 5
+  attackerShield: 0
+  attackerSP: -2
   attackerStun: 0
   targetHP: 0
   targetShield: 0
