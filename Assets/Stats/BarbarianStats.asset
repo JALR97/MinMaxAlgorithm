@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9eccab3e5924f82acab40ecb16c839a, type: 3}
   m_Name: BarbarianStats
   m_EditorClassIdentifier: 
-  HP: 6
-  shield: 3
+  HP: 4
+  shield: 5
   SP: 3
   stun: 0
-  maxHP: 6
+  maxHP: 4
   maxShield: 8
   maxSP: 3

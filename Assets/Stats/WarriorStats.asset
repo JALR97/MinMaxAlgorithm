@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 5
   shield: 4
-  SP: 3
+  SP: 4
   stun: 0
   maxHP: 5
   maxShield: 5
-  maxSP: 3
+  maxSP: 4

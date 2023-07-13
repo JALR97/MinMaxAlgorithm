@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9eccab3e5924f82acab40ecb16c839a, type: 3}
   m_Name: RangerStats
   m_EditorClassIdentifier: 
-  HP: 2
-  shield: 3
+  HP: 3
+  shield: 1
   SP: 3
   stun: 0
-  maxHP: 8
-  maxShield: 5
+  maxHP: 3
+  maxShield: 3
   maxSP: 3

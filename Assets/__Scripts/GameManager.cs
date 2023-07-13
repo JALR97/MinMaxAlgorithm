@@ -39,30 +39,70 @@ public class GameManager : MonoBehaviour {
 
     [SerializeField] private AI_Brain Brain;
 
+    [SerializeField] private GameObject PreGameUI;
+    [SerializeField] private GameObject GameUI;
+
     public Character char1;
     public Character char2;
+    
+    private int count1 = 0;
+    private int count2 = 0;
+
+    private Character.CharacterClass temp1;
+    private Character.CharacterClass temp2;
     
     //Attack buttons
     [SerializeField] private List<TMP_Text> MoveButtons;
     
     
     private void Start() {
-        //
-        SpawnChar(1, Sorcerer, Character.CharacterClass.WARRIOR);
-        SpawnChar(2, Barbarian, Character.CharacterClass.RANGER);
-        Prompt($"Jugador 1 - {char1.ToString()}. Seleccione un ataque");
-        UpdateUI();
+        Prompt($"Selecciones 2 personajes para cada lado [lado derecho es IA]");
     }
 
     public void Prompt(string message) {
         promtText.text = message;
-    } 
-    
+    }
+
+    public void AddChar(Character.CharacterClass charClass, int side) {
+        if (side == 1) {
+            if (count1 == 0) {
+                temp1 = charClass;
+                count1++;
+            }
+            else {
+                count1++;
+                SpawnChar(1, GetCharPrefab(temp1), charClass);
+            }
+        }
+        else {
+            if (count2 == 0) {
+                count2++;
+                temp2 = charClass;
+            }
+            else {
+                count2++;
+                SpawnChar(2, GetCharPrefab(temp2), charClass);
+            }
+        }
+
+        if (count1 == 2 && count2 == 2) {
+            StartGame();
+        }
+    }
+
+    private void StartGame() {
+        Prompt($"Jugador 1 - {char1.ToString()}. Seleccione un ataque");
+        PreGameUI.SetActive(false);
+        GameUI.SetActive(true);
+        UpdateUI();
+    }
+
     private void UpdateUI() {
         statsUI1.text = char1.StatsText();
         statsUI2.text = char2.StatsText();
-
+        Debug.Log("UpdateUI");
         for (int i = 0; i < MoveButtons.Count; i++) {
+            Debug.Log("update buttons");
             MoveButtons[i].text = GetCharPrefab(char1.characterClass).moves[i].name;
         }
     }
@@ -174,4 +214,5 @@ public class GameManager : MonoBehaviour {
         TreePrintUI.SetActive(true);
         TreePrintText.text = Brain.root.Print();
     }
+    
 }

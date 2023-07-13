@@ -26,7 +26,7 @@ public class AI_Brain : MonoBehaviour {
     }
 
     public void AlphaBetaOption(int depth) {
-        throw new NotImplementedException();
+        
     }
 }
 
