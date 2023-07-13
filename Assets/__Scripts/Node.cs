@@ -48,10 +48,6 @@ public class Node {
         DEBUG_callstoEval += 1;
         if (childs == null || childs.Count == 0) {
             valuation = nodeState.EvaluateState();
-<<<<<<< HEAD
-=======
-            AI_Brain.evaluatedNodes += 1;
->>>>>>> main
             return;
         }
 
