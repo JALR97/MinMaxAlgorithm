@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using System.Text;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class Node {
     public Move_SO MoveMade;
@@ -82,8 +84,8 @@ public class Node {
             return;
         }
         else if (characterStats.Stun) {
-            var newN = new Node(activeCharacter.Pass, this);
             childs = new List<Node>();
+            var newN = new Node(activeCharacter.Pass, this);
             childs.Add(newN);
         }
         else {
@@ -98,4 +100,50 @@ public class Node {
             node.CreateNodes(depth - 1);
         }
     }
+
+    public string Print(int depth = 0) {
+        StringBuilder spacing = new StringBuilder();
+        for (int i = 0; i < depth; i++) {
+            spacing.Append("        ");
+        }
+        string padd = spacing.ToString();
+        StringBuilder sb = new StringBuilder();
+        // sb.AppendLine($"{padd}{'{'}");
+        sb.AppendLine($"{padd}\"Val\": {valuation},");
+        sb.AppendLine($"{padd}\"Mov\": {MoveMade?.name},");
+        var str = isMaxNode ? "Max" : "Min";
+        sb.AppendLine($"{padd}\"Tipo\": {str},");
+        // sb.AppendLine($"\"alpha\": {alpha},");
+        // sb.AppendLine($"\"beta\": {beta},");
+
+        if (childs != null) {
+            // sb.AppendLine($"{padd}\"Valores hijos\": [");
+            // for (int i = 0; i < childs.Count; i++)
+            // {
+            //     sb.Append(childs[i].valuation.ToString());
+            //     if (i < childs.Count - 1)
+            //         sb.Append(", ");
+            // }
+            // sb.Append("]");
+            
+            sb.AppendLine($"\"\n{padd}Hijos\": [");
+            for (int i = 0; i < childs.Count; i++)
+            {
+                sb.Append(childs[i].Print(depth + 1));
+                if (i < childs.Count - 1)
+                {
+                    sb.Append(",");
+                }
+            }
+            sb.Append("]");
+        }
+        // sb.AppendLine($"{padd}{'}'}");
+        if (depth == 0) {
+            Debug.Log(sb.Length);
+        }
+        return sb.ToString();
+    }
 }
+
+
+

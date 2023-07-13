@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54fddab5145775c47be880e17e191c6f, type: 3}
   m_Name: Barbarian_basic
   m_EditorClassIdentifier: 
-  name: Basic attack
-  characterCharacterClass: 0
+  name: Basic attack [2Dmg]
+  characterCharacterClass: 2
   attackerHP: 0
   attackerShield: 0
   attackerSP: 0

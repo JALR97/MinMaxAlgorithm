@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54fddab5145775c47be880e17e191c6f, type: 3}
   m_Name: Sorcerer_special2
   m_EditorClassIdentifier: 
-  name: Basic defense
+  name: Lifesteal [+2HP / 4Dmg]
   characterCharacterClass: 0
   attackerHP: 2
   attackerShield: 0

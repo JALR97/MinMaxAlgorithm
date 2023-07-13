@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54fddab5145775c47be880e17e191c6f, type: 3}
   m_Name: Warrior_special2
   m_EditorClassIdentifier: 
-  name: Special 2
+  name: Respite [+5HP]
   characterCharacterClass: 0
   attackerHP: 5
   attackerShield: 0

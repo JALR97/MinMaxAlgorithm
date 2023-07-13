@@ -158,7 +158,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -2
   m_Sprite: {fileID: 2747690628134850419, guid: b670ab75dde984907b8570040daa08c5, type: 3}
-  m_Color: {r: 0.101960786, g: 0.10980392, b: 0.17254902, a: 0.95686275}
+  m_Color: {r: 0.23529412, g: 0.105882354, b: 0.16078432, a: 0.95686275}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -285,7 +285,7 @@ Transform:
   - {fileID: 8690439874349821984}
   - {fileID: 8496494972741213190}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6557695918603817782
 MonoBehaviour:

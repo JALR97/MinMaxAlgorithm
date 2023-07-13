@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54fddab5145775c47be880e17e191c6f, type: 3}
   m_Name: Warrior_basic
   m_EditorClassIdentifier: 
-  name: Basic attack
+  name: Basic attack [2Dmg]
   characterCharacterClass: 0
   attackerHP: 0
   attackerShield: 0

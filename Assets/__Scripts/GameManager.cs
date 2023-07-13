@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private TMP_Text statsUI2;
     [SerializeField] private TMP_Text gameOverText;
     [SerializeField] private GameObject gameOverUI;
+    [SerializeField] private GameObject TreePrintUI;
+    [SerializeField] private TMP_Text TreePrintText;
     [SerializeField] private TMP_InputField depthInput;
     
     [SerializeField] private Transform CharacterPosition1;
@@ -129,7 +131,7 @@ public class GameManager : MonoBehaviour {
         }
         ExecMove(nextMove);
     }
-    
+
     private void SwitchChar(int idPlayer) {
         Character.CharacterClass newCharacterClass;
         if (idPlayer == 1) {
@@ -163,5 +165,13 @@ public class GameManager : MonoBehaviour {
         gameOverText.text = $"El Jugador #{losingPlayer} ha sido derrotado";
         gameOverUI.SetActive(true);
     }
+
+    public void CloseTreeView() {
+        TreePrintUI.SetActive(false);
+    }
     
+    public void ShowTree() {
+        TreePrintUI.SetActive(true);
+        TreePrintText.text = Brain.root.Print();
+    }
 }

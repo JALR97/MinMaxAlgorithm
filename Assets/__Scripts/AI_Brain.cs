@@ -5,7 +5,7 @@ using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class AI_Brain : MonoBehaviour {
-    private Node root;
+    public Node root;
     
     private void CreateTree(int depth) {
         

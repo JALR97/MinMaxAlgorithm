@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54fddab5145775c47be880e17e191c6f, type: 3}
   m_Name: Barbarian_special1
   m_EditorClassIdentifier: 
-  name: Special 1
-  characterCharacterClass: 0
+  name: Shield Bash [+3Sh / 3Dmg]
+  characterCharacterClass: 2
   attackerHP: 0
-  attackerShield: 2
+  attackerShield: 3
   attackerSP: -1
   attackerStun: 0
   targetHP: -3
