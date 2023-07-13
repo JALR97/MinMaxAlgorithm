@@ -16,7 +16,7 @@ MonoBehaviour:
   characterCharacterClass: 0
   attackerHP: 0
   attackerShield: 0
-  attackerSP: -2
+  attackerSP: -3
   attackerStun: 0
   targetHP: -4
   targetShield: -10
