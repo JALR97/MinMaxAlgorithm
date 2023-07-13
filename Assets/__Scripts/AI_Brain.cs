@@ -60,48 +60,55 @@ public class GameState {
     }
     
     public GameState(GameState prev, Move_SO move) {
+        Character.CharStats attackerStatBlock, targetStatBlock;
         ClassStats_SO attackStats, targetStats;
         if (prev.idTurnPlayer == 2) {
             idTurnPlayer = 1;
 
+            attackerStatBlock = prev.c2Stats;
+            targetStatBlock = prev.c1Stats;
             attackStats = GameManager.Instance.char2.initialStats;
             targetStats = GameManager.Instance.char1.initialStats;
         }
         else {
             idTurnPlayer = 2;
             
+            attackerStatBlock = prev.c1Stats;
+            targetStatBlock = prev.c2Stats;
             attackStats = GameManager.Instance.char1.initialStats;
             targetStats = GameManager.Instance.char2.initialStats;
         }
 
-        c1Stats.HP = Mathf.Clamp(prev.c1Stats.HP + move.attackerHP, 0, attackStats.maxHP);
-        c1Stats.Shield = Mathf.Clamp(prev.c1Stats.Shield + move.attackerShield, 0, attackStats.maxShield);
-        c1Stats.SP = Mathf.Clamp(prev.c1Stats.SP + move.attackerSP, 0, attackStats.maxSP);
-        c1Stats.Stun = move.attackerStun;
+        attackerStatBlock.HP = Mathf.Clamp(attackerStatBlock.HP + move.attackerHP, 0, attackStats.maxHP);
+        attackerStatBlock.Shield = Mathf.Clamp(attackerStatBlock.Shield + move.attackerShield, 0, attackStats.maxShield);
+        attackerStatBlock.SP = Mathf.Clamp(attackerStatBlock.SP + move.attackerSP, 0, attackStats.maxSP);
+        attackerStatBlock.Stun = move.attackerStun;
 
-        int startingHP = prev.c2Stats.HP;
+        int startingHP = targetStatBlock.HP;
         if (startingHP <= 0) {
-            c2Stats.HP = 0;
-            c2Stats.Shield = 0;
-            c2Stats.SP = 0;
-            c2Stats.Stun = false;
+            targetStatBlock.HP = 0;
+            targetStatBlock.Shield = 0;
+            targetStatBlock.SP = 0;
+            targetStatBlock.Stun = false;
         }
         else {
-            c2Stats.Shield = Mathf.Clamp(prev.c2Stats.Shield + move.targetShield, 0, targetStats.maxShield);
-            int totalHitPool = prev.c2Stats.HP + c2Stats.Shield;
+            targetStatBlock.Shield = Mathf.Clamp(targetStatBlock.Shield + move.targetShield, 0, targetStats.maxShield);
+            int totalHitPool = targetStatBlock.HP + targetStatBlock.Shield;
             totalHitPool += move.targetHP;
-            c2Stats.HP = Mathf.Clamp(totalHitPool, 0, startingHP);
-            c2Stats.Shield = Mathf.Clamp(totalHitPool - startingHP, 0, targetStats.maxShield);
+            targetStatBlock.HP = Mathf.Clamp(totalHitPool, 0, startingHP);
+            targetStatBlock.Shield = Mathf.Clamp(totalHitPool - startingHP, 0, targetStats.maxShield);
         
-            c2Stats.SP = Mathf.Clamp(prev.c2Stats.SP + move.targetSP, 0, targetStats.maxSP);
-            c2Stats.Stun = move.targetStun;
+            targetStatBlock.SP = Mathf.Clamp(targetStatBlock.SP + move.targetSP, 0, targetStats.maxSP);
+            targetStatBlock.Stun = move.targetStun;
         }
 
         if (idTurnPlayer == 1) {
-            Character.CharStats temp;
-            temp = c1Stats;
-            c1Stats = c2Stats;
-            c2Stats = temp;
+            c2Stats = attackerStatBlock;
+            c1Stats = targetStatBlock;
+        }
+        else {
+            c1Stats = attackerStatBlock;
+            c2Stats = targetStatBlock;
         }
     }
 }

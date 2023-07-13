@@ -4823,7 +4823,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 459164950969731798, guid: 9b2edc794c02f6f41bcb3ca16e343875, type: 3}
       propertyPath: m_Interactable
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 459164950969731798, guid: 9b2edc794c02f6f41bcb3ca16e343875, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -4831,7 +4831,7 @@ PrefabInstance:
       objectReference: {fileID: 1130232445}
     - target: {fileID: 459164950969731798, guid: 9b2edc794c02f6f41bcb3ca16e343875, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CloseTreeView
+      value: ShowTree
       objectReference: {fileID: 0}
     - target: {fileID: 459164950969731798, guid: 9b2edc794c02f6f41bcb3ca16e343875, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -5637,7 +5637,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2146879025}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1130232445}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: CloseTreeView
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2146879025
 MonoBehaviour:
   m_ObjectHideFlags: 0

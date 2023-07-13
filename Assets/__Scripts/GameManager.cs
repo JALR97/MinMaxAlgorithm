@@ -48,8 +48,8 @@ public class GameManager : MonoBehaviour {
     
     private void Start() {
         //
-        SpawnChar(1, Barbarian, Character.CharacterClass.RANGER);
-        SpawnChar(2, Sorcerer, Character.CharacterClass.WARRIOR);
+        SpawnChar(1, Sorcerer, Character.CharacterClass.WARRIOR);
+        SpawnChar(2, Barbarian, Character.CharacterClass.RANGER);
         Prompt($"Jugador 1 - {char1.ToString()}. Seleccione un ataque");
         UpdateUI();
     }
