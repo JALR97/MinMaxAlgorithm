@@ -65,7 +65,7 @@ public class Character : MonoBehaviour {
             int totalHitPool = _stats.HP + _stats.Shield;
             totalHitPool += hp;
             _stats.HP = Mathf.Clamp(totalHitPool, 0, startingHP);
-            _stats.Shield = Mathf.Clamp(totalHitPool % startingHP, 0, startingHP);
+            _stats.Shield = Mathf.Clamp(totalHitPool - startingHP, 0, initialStats.maxShield);
         }
         else {
             _stats.HP = Mathf.Clamp(_stats.HP + hp, 0, initialStats.maxHP);

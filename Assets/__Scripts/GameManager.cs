@@ -46,8 +46,8 @@ public class GameManager : MonoBehaviour {
     
     private void Start() {
         //
-        SpawnChar(1, Warrior);
-        SpawnChar(2, Barbarian, Character.CharacterClass.WARRIOR);
+        SpawnChar(1, Barbarian, Character.CharacterClass.RANGER);
+        SpawnChar(2, Sorcerer, Character.CharacterClass.WARRIOR);
         Prompt($"Jugador 1 - {char1.ToString()}. Seleccione un ataque");
         UpdateUI();
     }
@@ -87,8 +87,6 @@ public class GameManager : MonoBehaviour {
         idTurnPlayer = newIdTurn;
         
         Prompt($"{attacker.ToString()} realiza {move.name}");
-        Debug.Log($"Attacker-HP{move.attackerHP};Shi{move.attackerShield};SP{move.attackerSP}");
-        Debug.Log($"Target-HP{move.targetHP};Shi{move.targetShield};SP{move.targetSP}");
         attacker.UpdateStats(move.attackerHP, move.attackerShield, move.attackerSP, move.attackerStun);
         target.UpdateStats(move.targetHP, move.targetShield, move.targetSP, move.targetStun);
         UpdateUI();        

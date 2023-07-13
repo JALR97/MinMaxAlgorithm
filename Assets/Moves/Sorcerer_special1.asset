@@ -19,6 +19,6 @@ MonoBehaviour:
   attackerSP: -2
   attackerStun: 0
   targetHP: 0
-  targetShield: -5
+  targetShield: -10
   targetSP: 0
   targetStun: 0

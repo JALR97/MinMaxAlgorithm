@@ -15,25 +15,19 @@ public class AI_Brain : MonoBehaviour {
         float timer = Time.time;
         root = new Node(GameManager.Instance.char1.Stats(), GameManager.Instance.char2.Stats());
         root.CreateNodes(depth);
-        ///////////////////////////////////
-        //Debug.Log($"Stats: Nodos creados: {createdNodes}");
+        timer = Time.time - timer;
+
+        Node.DEBUG_callstoEval = 0;
+        Debug.Log($"Time creating nodes: {timer}");
         root.EvaluateNode();
-        ///////////////////////////////////
-        //Debug.Log($"Stats: Nodos evaluados: {evaluatedNodes}");
+        
         Node option = root.BestOption();
-        ///////////////////////////////////
-        //Debug.Log($"Stats: Tiempo total:[{Time.time - timer:F3}] con limite de nivel: [{depth}]");
         return option.MoveMade;
     }
 
     public void AlphaBetaOption(int depth) {
         throw new NotImplementedException();
     }
-    ///////////////////////////////////DEBUG
-    public static int createdNodes = 0;
-    public static int evaluatedNodes = 0;
-    
-    ///////////////////////////////////DEBUG
 }
 
 public class GameState {
@@ -59,7 +53,7 @@ public class GameState {
         total += (c1Stats.HP + c1Stats.Shield) - (c2Stats.HP + c2Stats.Shield);
         
         //could need change
-        int SPWeight = 1;
+        int SPWeight = 0;
         total += SPWeight * (c1Stats.SP - c2Stats.SP);
 
         return total;
@@ -97,7 +91,7 @@ public class GameState {
             int totalHitPool = prev.c2Stats.HP + c2Stats.Shield;
             totalHitPool += move.targetHP;
             c2Stats.HP = Mathf.Clamp(totalHitPool, 0, startingHP);
-            c2Stats.Shield = Mathf.Clamp(totalHitPool % startingHP, 0, targetStats.maxShield);
+            c2Stats.Shield = Mathf.Clamp(totalHitPool - startingHP, 0, targetStats.maxShield);
         
             c2Stats.SP = Mathf.Clamp(prev.c2Stats.SP + move.targetSP, 0, targetStats.maxSP);
             c2Stats.Stun = move.targetStun;

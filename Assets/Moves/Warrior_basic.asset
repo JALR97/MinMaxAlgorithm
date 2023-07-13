@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Warrior_basic
   m_EditorClassIdentifier: 
   name: Basic attack
-  characterClass: 0
+  characterCharacterClass: 0
   attackerHP: 0
   attackerShield: 0
   attackerSP: 0
   attackerStun: 0
-  targetHP: -1
+  targetHP: -2
   targetShield: 0
   targetSP: 0
   targetStun: 0
