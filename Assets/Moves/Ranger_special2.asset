@@ -15,8 +15,8 @@ MonoBehaviour:
   name: Basic defense
   characterCharacterClass: 0
   attackerHP: 0
-  attackerShield: 3
-  attackerSP: 0
+  attackerShield: 1
+  attackerSP: 1
   attackerStun: 0
   targetHP: 0
   targetShield: 0

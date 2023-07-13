@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Basic defense
   characterCharacterClass: 0
-  attackerHP: 0
-  attackerShield: 3
-  attackerSP: 0
+  attackerHP: 2
+  attackerShield: 0
+  attackerSP: -1
   attackerStun: 0
-  targetHP: 0
+  targetHP: -4
   targetShield: 0
   targetSP: 0
   targetStun: 0

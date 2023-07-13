@@ -13,6 +13,8 @@ public class Node {
     private Node parent;
     private List<Node> childs;
 
+    public static int DEBUG_callstoEval = 0;
+    
     public Node(Move_SO moveMade, Node parent) {
         MoveMade = moveMade;
         this.parent = parent;
@@ -43,32 +45,28 @@ public class Node {
     }
 
     public void EvaluateNode() {
-        // if (childs != null) {
-        //     Debug.Log(childs.Count);
-        // }
+        DEBUG_callstoEval += 1;
         if (childs == null || childs.Count == 0) {
             valuation = nodeState.EvaluateState();
-            ///////////////////////////
             AI_Brain.evaluatedNodes += 1;
-            ///////////////////////////
+            return;
+        }
+
+        if (isMaxNode) {
+            float currentMax = Mathf.NegativeInfinity;
+            foreach (var node in childs) {
+                node.EvaluateNode();
+                currentMax = Mathf.Max(currentMax, node.valuation);
+            }
+            valuation = (int)currentMax;
         }
         else {
-            if (isMaxNode) {
-                float currentMax = Mathf.NegativeInfinity;
-                foreach (var node in childs) {
-                    node.EvaluateNode();
-                    currentMax = Mathf.Max(currentMax, node.valuation);
-                }
-                valuation = (int)currentMax;
+            float currentMin = Mathf.Infinity;
+            foreach (var node in childs) {
+                node.EvaluateNode();
+                currentMin = Mathf.Min(currentMin, node.valuation);
             }
-            else {
-                float currentMin = Mathf.Infinity;
-                foreach (var node in childs) {
-                    node.EvaluateNode();
-                    currentMin = Mathf.Min(currentMin, node.valuation);
-                }
-                valuation = (int)currentMin;
-            }
+            valuation = (int)currentMin;
         }
     }
     
@@ -76,7 +74,6 @@ public class Node {
         if (depth == 0) {
             return;
         }
-
         
         Character activeCharacter = nodeState.idTurnPlayer == 1 ? GameManager.Instance.char1 : GameManager.Instance.char2;
         Character.CharStats characterStats = nodeState.idTurnPlayer == 1 ? nodeState.c1Stats : nodeState.c2Stats;
@@ -98,9 +95,6 @@ public class Node {
                 childs.Add(newN);
             }
         }
-        ///////////////////////////
-        //AI_Brain.createdNodes += childs.Count;
-        ///////////////////////////
         foreach (var node in childs) {
             node.CreateNodes(depth - 1);
         }

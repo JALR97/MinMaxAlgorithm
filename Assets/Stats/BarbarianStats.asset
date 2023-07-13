@@ -16,6 +16,6 @@ MonoBehaviour:
   shield: 3
   SP: 3
   stun: 0
-  maxHP: 8
-  maxShield: 5
+  maxHP: 6
+  maxShield: 8
   maxSP: 3
